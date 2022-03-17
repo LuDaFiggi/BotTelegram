@@ -28,6 +28,7 @@ public class GetUpdates extends Thread {
     int arrl;
     ClearUpdates clear;
     SendMessage send;
+    Location location;
 
     public GetUpdates() throws IOException {
         c = new Chat();
@@ -36,6 +37,7 @@ public class GetUpdates extends Thread {
         arrl = 0;
         clear = new ClearUpdates();
         send = new SendMessage();
+        location = new Location();
     }
 
     public String getStringJson(String url) throws MalformedURLException, IOException {
@@ -55,9 +57,11 @@ public class GetUpdates extends Thread {
 
         while (true) {
             String jsonString = "";
+
             try {
                 clear.clear();
                 jsonString = getStringJson("https://api.telegram.org/bot5104853499:AAHxkpigvsm3p6UGxyL_54xySEyrUfMXJeg/getUpdates");
+
             } catch (IOException ex) {
                 Logger.getLogger(GetUpdates.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -82,18 +86,29 @@ public class GetUpdates extends Thread {
 
                         JSONObject arrChat = arr.getJSONObject(i).getJSONObject("message").getJSONObject("chat");
                         int idChat = arrChat.getInt("id");
-                        String first_nameChat = arrChat.getString("first_name");
-                        String type = arrChat.getString("type");
-                        c.popola(idChat, first_nameChat, type);
 
-                        inf.popola(update_id, message_id, date, text, inf, c);
-                        System.out.println(inf.toString());
-                        try {
-                            send.send(idChat, text);
-                        } catch (IOException ex) {
-                            Logger.getLogger(GetUpdates.class.getName()).log(Level.SEVERE, null, ex);
+                        //--------------------------------------------
+                        //                   CITTA'
+                        //--------------------------------------------
+                        if (text.contains("/citta")) {
+                            
+                            location.search(text, i, idChat, first_nameFrom);
+
+                        } //--------------------------------------------
+                        else {
+                            String first_nameChat = arrChat.getString("first_name");
+                            String type = arrChat.getString("type");
+                            c.popola(idChat, first_nameChat, type);
+
+                            inf.popola(update_id, message_id, date, text, inf, c);
+                            System.out.println(inf.toString());
+                            try {
+                                send.send(idChat, text);
+                            } catch (IOException ex) {
+                                Logger.getLogger(GetUpdates.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            System.out.println("Ho risposto: " + text);
                         }
-                        System.out.println("Ho risposto: " + text);
                     }
                 }
                 arrl = arr.length();

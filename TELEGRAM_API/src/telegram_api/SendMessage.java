@@ -28,4 +28,9 @@ public class SendMessage {
         url.openStream();
     }
     
+    public void sendLocation(int chat_id, Float lat, Float lon) throws MalformedURLException, IOException{
+        URL url = new URL("https://api.telegram.org/bot5104853499:AAHxkpigvsm3p6UGxyL_54xySEyrUfMXJeg/sendLocation?chat_id=" + chat_id + "&latitude=" + (lat) + "&longitude=" + lon);
+        url.openStream();
+    }
+    
 }

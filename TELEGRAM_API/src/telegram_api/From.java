@@ -5,29 +5,6 @@
 package telegram_api;
 
 /**
- *"ok":true,
-   "result":[
-      {
-         "update_id":78290423,
-         "message":{
-            "message_id":5,
-            "from":{
-               "id":5238155445,
-               "is_bot":false,
-               "first_name":"Facc",
-               "username":"Fackc",
-               "language_code":"it"
-            },
-            "chat":{
-               "id":5238155445,
-               "first_name":"Facc",
-               "username":"Fackc",
-               "type":"private"
-            },
-            "date":1646387697,
-            "text":"ciao"
-         }
-      },
  * @author lucab
  */
 public class From {

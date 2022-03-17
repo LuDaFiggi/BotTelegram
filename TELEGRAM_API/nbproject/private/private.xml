@@ -3,13 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/TECNOLOGIE/TELEGRAM_API/src/telegram_api/Info.java</file>
-            <file>file:/E:/TECNOLOGIE/TELEGRAM_API/src/telegram_api/From.java</file>
+            <file>file:/E:/TECNOLOGIE/TELEGRAM_API/src/telegram_api/GetStringJSON.java</file>
             <file>file:/E:/TECNOLOGIE/TELEGRAM_API/src/telegram_api/ClearUpdates.java</file>
             <file>file:/E:/TECNOLOGIE/TELEGRAM_API/src/telegram_api/getUpdates.java</file>
-            <file>file:/E:/TECNOLOGIE/TELEGRAM_API/src/telegram_api/Chat.java</file>
             <file>file:/E:/TECNOLOGIE/TELEGRAM_API/src/telegram_api/SendMessage.java</file>
             <file>file:/E:/TECNOLOGIE/TELEGRAM_API/src/telegram_api/Messages.java</file>
+            <file>file:/E:/TECNOLOGIE/TELEGRAM_API/src/telegram_api/Location.java</file>
+            <file>file:/E:/TECNOLOGIE/TELEGRAM_API/src/telegram_api/File.java</file>
         </group>
     </open-files>
 </project-private>
