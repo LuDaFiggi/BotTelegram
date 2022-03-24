@@ -12,8 +12,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.xml.parsers.ParserConfigurationException;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -29,6 +31,7 @@ public class GetUpdates extends Thread {
     ClearUpdates clear;
     SendMessage send;
     Location location;
+    LocationXML locationXML;
 
     public GetUpdates() throws IOException {
         c = new Chat();
@@ -38,6 +41,7 @@ public class GetUpdates extends Thread {
         clear = new ClearUpdates();
         send = new SendMessage();
         location = new Location();
+        locationXML = new LocationXML();
     }
 
     public String getStringJson(String url) throws MalformedURLException, IOException {
@@ -93,6 +97,13 @@ public class GetUpdates extends Thread {
                         if (text.contains("/citta")) {
                             
                             location.search(text, i, idChat, first_nameFrom);
+                            try {
+                                locationXML.ParseFile(text, i, idChat, first_nameFrom);
+                            } catch (ParserConfigurationException ex) {
+                                Logger.getLogger(GetUpdates.class.getName()).log(Level.SEVERE, null, ex);
+                            } catch (SAXException ex) {
+                                Logger.getLogger(GetUpdates.class.getName()).log(Level.SEVERE, null, ex);
+                            }
 
                         } //--------------------------------------------
                         else {

@@ -25,7 +25,7 @@ public class Location {
         WriteFile = new File("Utenti.txt");
     }
 
-    public void search(String text, int pos, int idChat, String name) {
+    public void search(String text, int pos, int idChat, String name) throws IOException {
         String[] split = text.split(" ");
         String luogo = "";
         for (int j = 1; j < split.length; j++) {
@@ -54,12 +54,15 @@ public class Location {
         Float lat = arrPlaces.getJSONObject(pos).getFloat("lat");
         Float lon = arrPlaces.getJSONObject(pos).getFloat("lon");
         System.out.println("[" + idChat + "] SEARCHED --> " + citta);
-        try {
+        
+        //FUNZIONA MA LO FA GIA L'XML se serve usare
+        /*try {
+        // distance = Math.sqrt((x1-x2)(x1-x2) + (y1-y2)(y1-y2));
             send.sendLocation(idChat, lat, lon);
             send.send(idChat, citta);
         } catch (IOException ex) {
             Logger.getLogger(GetUpdates.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
         
         //--------------------------------------------
         //                 WriteToFile

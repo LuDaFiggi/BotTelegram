@@ -22,7 +22,5 @@ public class BOT_TELEGRAM {
         // TODO code application logic here
         GetUpdates p = new GetUpdates();
         p.start();
-
     }
-
 }
